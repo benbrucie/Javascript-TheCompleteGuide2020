@@ -1,5 +1,6 @@
 let currentResult = 0;
 let logEntries = [];
+let logObject = {};
 
 //get input from input field
 function getInputNum(){
@@ -17,7 +18,14 @@ function add(){
   const initialResult = currentResult;
   currentResult = currentResult + enteredNum;
   writeDescription('+', initialResult, enteredNum);
-  logEntries.push(enteredNum);
+  logObject = {
+    Operation:'Addition',
+    FirstOperand: initialResult,
+    SecondOperand: enteredNum,
+    Operator: '+',
+    Result: currentResult
+  };
+  logEntries.push(logObject);
   console.log(logEntries);
 }
 
@@ -26,6 +34,15 @@ function subtract(){
   const initialResult = currentResult;
   currentResult = currentResult - parseInt(enteredNum);
   writeDescription('-', initialResult, enteredNum);
+  logObject = {
+    Operation:'Subtraction',
+    FirstOperand: initialResult,
+    SecondOperand: enteredNum,
+    Operator: '-',
+    Result: currentResult
+  };
+  logEntries.push(logObject);
+  console.log(logEntries);
 }
 
 function multiply(){
@@ -33,6 +50,15 @@ function multiply(){
   const initialResult = currentResult;
   currentResult = currentResult * parseInt(enteredNum);
   writeDescription('*', initialResult, enteredNum);
+  logObject = {
+    Operation:'Multiplication',
+    FirstOperand: initialResult,
+    SecondOperand: enteredNum,
+    Operator: '*',
+    Result: currentResult
+  };
+  logEntries.push(logObject);
+  console.log(logEntries);
 }
 
 function divide(){
@@ -40,6 +66,15 @@ function divide(){
   const initialResult = currentResult;
   currentResult = currentResult / parseInt(enteredNum);
   writeDescription('/', initialResult, enteredNum);
+  logObject = {
+    Operation:'Division',
+    FirstOperand: initialResult,
+    SecondOperand: enteredNum,
+    Operator: '/',
+    Result: currentResult
+  };
+  logEntries.push(logObject);
+  console.log(logEntries);
 }
 
 
