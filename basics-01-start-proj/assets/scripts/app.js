@@ -1,4 +1,5 @@
 let currentResult = 0;
+let logEntries = [];
 
 //get input from input field
 function getInputNum(){
@@ -16,6 +17,8 @@ function add(){
   const initialResult = currentResult;
   currentResult = currentResult + enteredNum;
   writeDescription('+', initialResult, enteredNum);
+  logEntries.push(enteredNum);
+  console.log(logEntries);
 }
 
 function subtract(){
