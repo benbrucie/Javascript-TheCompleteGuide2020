@@ -1,9 +1,11 @@
 let currentResult = 0;
 
+//get input from input field
 function getInputNum(){
   return parseInt(userInput.value);
 }
 
+//write operation discription
 function writeDescription(operator, firstResult, resultNow){
   const description = `${firstResult} ${operator} ${resultNow}`;
   outputResult(currentResult, description);
