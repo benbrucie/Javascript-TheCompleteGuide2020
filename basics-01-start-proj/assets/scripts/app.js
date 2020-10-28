@@ -13,68 +13,54 @@ function writeDescription(operator, firstResult, resultNow){
   outputResult(currentResult, description);
 }
 
-function add(){
+function writeLog(operation, fOperand, sOperand, operator, result){
+  const logEntry = {
+    Operation: operation,
+    FirstOperand: fOperand,
+    SecondOperand: sOperand,
+    Operator: operator,
+    Result: result
+  };
+  logEntries.push(logEntry);
+  console.log(logEntries);
+}
+
+function calculation(calculationType){
   const enteredNum = getInputNum();
   const initialResult = currentResult;
-  currentResult = currentResult + enteredNum;
-  writeDescription('+', initialResult, enteredNum);
-  logObject = {
-    Operation:'Addition',
-    FirstOperand: initialResult,
-    SecondOperand: enteredNum,
-    Operator: '+',
-    Result: currentResult
-  };
-  logEntries.push(logObject);
-  console.log(logEntries);
+  let mathOperator;
+
+  if (calculationType === 'Addition'){
+    currentResult = currentResult + enteredNum;
+    mathOperator = '+';
+  } else if (calculationType === 'Subtraction'){
+    currentResult = currentResult - parseInt(enteredNum);
+    mathOperator = '-';
+  } else if (calculationType === 'Multiplication'){
+    currentResult = currentResult * parseInt(enteredNum);
+    mathOperator = '*';
+  } else {
+    currentResult = currentResult / parseInt(enteredNum);
+    mathOperator = '/';
+  }
+  writeDescription(mathOperator, initialResult, enteredNum);
+  writeLog(calculationType, initialResult, enteredNum, mathOperator, currentResult);
+}
+
+function add(){
+  calculation('Addition');
 }
 
 function subtract(){
-  const enteredNum = getInputNum();
-  const initialResult = currentResult;
-  currentResult = currentResult - parseInt(enteredNum);
-  writeDescription('-', initialResult, enteredNum);
-  logObject = {
-    Operation:'Subtraction',
-    FirstOperand: initialResult,
-    SecondOperand: enteredNum,
-    Operator: '-',
-    Result: currentResult
-  };
-  logEntries.push(logObject);
-  console.log(logEntries);
+  calculation('Subtraction');
 }
 
 function multiply(){
-  const enteredNum = getInputNum();
-  const initialResult = currentResult;
-  currentResult = currentResult * parseInt(enteredNum);
-  writeDescription('*', initialResult, enteredNum);
-  logObject = {
-    Operation:'Multiplication',
-    FirstOperand: initialResult,
-    SecondOperand: enteredNum,
-    Operator: '*',
-    Result: currentResult
-  };
-  logEntries.push(logObject);
-  console.log(logEntries);
+  calculation('Multiplication');
 }
 
 function divide(){
-  const enteredNum = getInputNum();
-  const initialResult = currentResult;
-  currentResult = currentResult / parseInt(enteredNum);
-  writeDescription('/', initialResult, enteredNum);
-  logObject = {
-    Operation:'Division',
-    FirstOperand: initialResult,
-    SecondOperand: enteredNum,
-    Operator: '/',
-    Result: currentResult
-  };
-  logEntries.push(logObject);
-  console.log(logEntries);
+  calculation('Division');
 }
 
 
