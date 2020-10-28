@@ -27,6 +27,16 @@ function writeLog(operation, fOperand, sOperand, operator, result){
 
 function calculation(calculationType){
   const enteredNum = getInputNum();
+
+  if (
+    calculationType !== 'Addition' &&
+    calculationType !== 'Subtraction' &&
+    calculationType !== 'Multiplication' &&
+    calculationType !== 'Division' ||
+    !enteredNum
+){
+  return;
+}
   const initialResult = currentResult;
   let mathOperator;
 
@@ -62,8 +72,6 @@ function multiply(){
 function divide(){
   calculation('Division');
 }
-
-
 
 addBtn.addEventListener('click', add);
 subtractBtn.addEventListener('click', subtract);
